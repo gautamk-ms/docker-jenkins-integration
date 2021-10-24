@@ -1,9 +1,19 @@
-node{
-    stage('SCM Checkout'){
-        git 'https://github.com/gautamk-ms/docker-jenkins-integration.git'
+pipeline{
+    agent any
+
+    stages {
+        stage("Build"){
+            steps{
+                sh "mvn -version"
+                sh "mvn clean install"
+            }
+        }
     }
 
-    stage('Compile-Package'){
-        sh 'mvn package'
+    post{
+        always{
+            cleanWs()
+        }
     }
+
 }
