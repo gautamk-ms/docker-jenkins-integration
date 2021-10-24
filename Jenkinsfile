@@ -6,7 +6,7 @@ pipeline{
         //     }
 
         ////If you want multiple maven version then use this
-        docker{
+        docker {
             image "maven:3.8.3-jdk-8"
             label "docker"
         }
