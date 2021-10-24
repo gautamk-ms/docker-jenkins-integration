@@ -1,5 +1,5 @@
-pipeline{
-    agent{
+pipeline {
+    agent {
         ////If you want only single maven version then use this
         //     tools{
         //         maven "3.6.0"
@@ -10,14 +10,13 @@ pipeline{
             image "maven:3.8.3-jdk-8"
             label "docker"
         }
-
     }
 
 
 
 
     stages {
-        stage("Build"){
+        stage("Build") {
             steps{
                 sh "mvn -version"
                 sh "mvn clean install"
@@ -26,7 +25,7 @@ pipeline{
     }
 
     post{
-        always{
+        always {
             cleanWs()
         }
     }
